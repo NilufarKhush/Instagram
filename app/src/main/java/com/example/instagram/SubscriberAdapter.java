@@ -3,12 +3,19 @@ package com.example.instagram;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class SubscriberAdapter extends RecyclerView.Adapter<SubscriberAdapter.SubscriberViewHolder> {
 
+    Post[] posts;
+
+    public SubscriberAdapter(Post[] posts){
+        this.posts = posts;
+
+    }
 
 
     @Override
@@ -20,15 +27,17 @@ public class SubscriberAdapter extends RecyclerView.Adapter<SubscriberAdapter.Su
 
     @Override
     public void onBindViewHolder(SubscriberAdapter.SubscriberViewHolder holder, int position) {
+        holder.textView.setText(posts[position].name);
 
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return posts.length;
     }
 
     class SubscriberViewHolder extends RecyclerView.ViewHolder {
+        TextView textView;
         public SubscriberViewHolder(View view){
             super(view);
         }
